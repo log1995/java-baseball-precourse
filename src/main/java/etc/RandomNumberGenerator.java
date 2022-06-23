@@ -17,7 +17,7 @@ public class RandomNumberGenerator {
         return RandomNumsArr;
     }
 
-    public void getUniqueNumber(int i) {
+    private void getUniqueNumber(int i) {
         while(compareNums(RandomNumsArr, i))
             RandomNumsArr[i] = Randoms.pickNumberInRange(START, END);
     }

@@ -10,11 +10,10 @@ public class BaseballController {
         this.baseballService = new BaseballService();
     }
 
-    public void run() throws IllegalArgumentException {
+    public void run() {
         do {
             baseballService.initBaseballGame();
             startGame();
-
         }while(baseballService.askReGame());
 
     }

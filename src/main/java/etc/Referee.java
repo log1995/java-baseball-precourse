@@ -4,13 +4,13 @@ import domain.Result;
 import io.Output;
 
 
-public class NumberCheck {
+public class Referee {
 
     private Result result;
     private Output output;
 
 
-    public NumberCheck() {
+    public Referee() {
         this.result = new Result();
         this.output = new Output();
     }
@@ -22,7 +22,7 @@ public class NumberCheck {
         printCount();
     }
 
-    public void checkBallCount(int userNum, int i, int[] comNums) {
+    private void checkBallCount(int userNum, int i, int[] comNums) {
         for(int j= 0; j < 3; j++){
             if(userNum == comNums[j] && i == j)
                 result.increaseStrike();
@@ -31,23 +31,23 @@ public class NumberCheck {
         }
     }
 
-    public void printCount() {
-        if(result.getBalls() == 0 && result.getStrikes() == 0)
+    private void printCount() {
+        if(result.isBallZero() && result.isStrikeZero())
             output.printNothing();
-        else if(result.getStrikes() == 3) {
+        else if(result.isStrikeThree()) {
             output.printStrikeCount(result.getStrikes());
-            output.gameEndMessage();
+            output.printGameEndMessage();
         }
-        else if(result.getBalls() != 0 && result.getStrikes() == 0)
+        else if(!result.isBallZero() && result.isStrikeZero())
             output.printBallCount(result.getBalls());
-        else if(result.getBalls() == 0 && result.getStrikes() != 0)
+        else if(result.isBallZero() && !result.isStrikeZero())
             output.printStrikeCount(result.getStrikes());
         else
             output.printBallAndStrikeCount(result.getBalls(), result.getStrikes());
 
     }
     public boolean strikeCount() {
-        if(result.getStrikes() == 3)
+        if(result.isStrikeThree())
             return true;
         return false;
     }

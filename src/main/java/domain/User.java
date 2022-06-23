@@ -1,14 +1,18 @@
 package domain;
 
+import io.ConsoleInput;
 import io.Input;
+import io.Output;
 
 public class User {
 
     private Input input;
+    private Output output;
     private int[] userNums;
 
     public User() {
-        this.input = new Input();
+        this.input = new ConsoleInput();
+        this.output = new Output();
     }
 
     public int[] getUserNums(){
@@ -16,11 +20,13 @@ public class User {
     }
 
     public void setUserNums(){
-        userNums = input.inputNum();
+        output.printStartMessage();
+        userNums = input.inputUserNum();
     }
 
     public String askReGame(){
-        return input.reGame();
+        output.printReGameMessage();
+        return input.inputReGameNum();
     }
 
 
